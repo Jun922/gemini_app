@@ -1,15 +1,24 @@
-from flask import Flask
+from flask import Flask, render_template, request
 from config import model
 from src import main
 
 
-if __name__ == "__main__":
-    main(model)
-
-
 app = Flask(__name__)
-@app.route('/')
-def index():
-    return 'Hello World!'
+buff = []
 
-app.run(debug=True)
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template("index.html")
+
+
+@app.route("/index", methods=["post"])
+def post():
+    prompt = request.form["prompt"]
+    buff.append(main(model, prompt))
+    return render_template("index.html", buff=buff)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
