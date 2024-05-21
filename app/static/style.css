@@ -1,0 +1,35 @@
+body {
+    background-color: rgba(0, 0, 0, 0.835);
+    margin: 0;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 5% 10%;
+}
+
+h1 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.display {
+    background-color: white;
+    height: 70vh;
+}
+
+form {
+    display: flex;
+}
+
+form input {
+    width: 95%;
+    height: 40px;
+    margin-top: 30px;
+}
+
+form button {
+    width: 5%;
+    height: 46px;
+    margin-top: 30px;
+}
