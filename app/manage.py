@@ -16,7 +16,9 @@ def index():
 @app.route("/index", methods=["post"])
 def post():
     prompt = request.form["prompt"]
-    buff.append(main(model, prompt))
+    buff.append(f"{prompt}\n")
+    for line in main(model, prompt):
+        buff.append(line)
     return render_template("index.html", buff=buff)
 
 

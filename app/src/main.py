@@ -2,12 +2,12 @@ import re
 
 
 def main(model, prompt):
-    response = model.generate_content(prompt)
+    response = (model.generate_content(prompt)).text
 
     ret =[]
     while True:
         try:
-            _, end = (re.search(r"\n", response.text)).regs[0]
+            _, end = (re.search(r"\n", response)).regs[0]
         except AttributeError:
             ret.append(response[:])
             break
