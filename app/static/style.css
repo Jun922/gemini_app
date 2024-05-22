@@ -16,6 +16,7 @@ h1 {
 .display {
     background-color: white;
     height: 70vh;
+    overflow-y: scroll;
 }
 
 form {
