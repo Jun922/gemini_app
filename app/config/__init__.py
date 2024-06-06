@@ -1,1 +1,1 @@
-from .settings import model
+from .settings import model, ALLOWED_EXTENSIONS

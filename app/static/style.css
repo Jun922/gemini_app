@@ -23,9 +23,14 @@ form {
     display: flex;
 }
 
-form input {
-    width: 95%;
+.input_txt {
+    width: 84%;
     height: 40px;
+    margin-top: 30px;
+}
+
+.upload_file {
+    height: 46px;
     margin-top: 30px;
 }
 

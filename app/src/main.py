@@ -12,6 +12,7 @@ def main(model, prompt):
         except AttributeError:
             ret.append(response[:])
             break
+        
         ret.append(response[:end])
         response = response[end:]
     return ret
