@@ -19,8 +19,13 @@
             
             <form action="/index" method="POST">
                 <input class="input_txt" type="text" name="prompt" placeholder="enter prompt">
-                <input class="upload_file" type="file" name="upload" style="display:none">
-                <button type="submit">送信</button>
+                <div class="btn">
+                    <label>
+                        ファイルを選択
+                        <input class="upload_file" type="file" name="upload" style="display:none">
+                    </label>
+                    <button type="submit">送信</button>
+                </div>
             </form>
         </div>
     </main>

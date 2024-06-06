@@ -24,18 +24,23 @@ form {
 }
 
 .input_txt {
-    width: 84%;
+    width: 85%;
     height: 40px;
     margin-top: 30px;
 }
 
-.upload_file {
-    height: 46px;
+.btn {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
     margin-top: 30px;
 }
 
-form button {
-    width: 5%;
-    height: 46px;
-    margin-top: 30px;
+.btn label {
+    background-color: rgb(240, 240, 240);
+    width: 98%;
+    height: 20px;
+    font-size: 0.6rem;
+    text-align: center;
+    margin: 0 1px;
 }
