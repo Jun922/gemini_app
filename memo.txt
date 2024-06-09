@@ -1,0 +1,10 @@
+process flow
+1. upload -> (only)file name
+   need abs path
+
+2. read and divide small token
+   input buff
+
+3. throw to AI
+
+4. get response

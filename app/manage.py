@@ -15,10 +15,9 @@ def index():
 
 @app.route("/index", methods=["post"])
 def post():
-    prompt = request.form["prompt"]
-    buff.append(prompt)
-    buff.append("\n")
-    for line in main(model, prompt):
+    file_name = request.form["upload_file"]
+    
+    for line in main(model, file_name):
         buff.append(line)
     return render_template("index.html", buff=buff)
 
