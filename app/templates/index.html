@@ -17,8 +17,8 @@
                 {% endfor %}
             </div>
             
-            <form action="/index" method="POST">
-                <input type="file" name="upload_file">
+            <form action="/index" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file">
                 <button type="submit">送信</button>
             </form>
         </div>

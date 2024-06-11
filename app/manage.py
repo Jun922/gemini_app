@@ -1,4 +1,4 @@
-import pathlib
+import os
 from flask import Flask, render_template, request
 from config import model
 from src import main
@@ -14,14 +14,11 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/index", methods=["post"])
-def post():
-    file_name = request.form["upload_file"]
-    file_path = "" + file_name
-    # need abs path
-
-    for line in main(model, file_path):
-        buff.append(line)
+@app.route('/index', methods=["post"])
+def upload():
+    file = request.files.get('file')
+    file_path = f"{os.getcwd()}/app/upload/{file.filename}"
+    file.save(file_path)
     return render_template("index.html", buff=buff)
 
 
