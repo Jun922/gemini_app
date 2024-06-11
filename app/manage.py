@@ -16,9 +16,10 @@ def index():
 
 @app.route('/index', methods=["post"])
 def upload():
-    file = request.files.get('file')
+    file = request.files.get('upload_file')
     file_path = f"{os.getcwd()}/app/upload/{file.filename}"
     file.save(file_path)
+    ret = main(model, file_path)
     return render_template("index.html", buff=buff)
 
 
