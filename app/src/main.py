@@ -1,5 +1,5 @@
 import re
-import openpyxl
+import pandas as pd
 
 def main(model, file_path):
     # response = (model.generate_content(prompt)).text
@@ -20,9 +20,10 @@ def main(model, file_path):
 
 
 def read_excel(file_path):
-    wb = openpyxl.load_workbook(file_path)
-    sheet = wb["スキルシート（開発系）"]
-    read_range = sheet['B5':'BY144']
+    # wb = openpyxl.load_workbook(file_path)
+    # sheet = wb["スキルシート（開発系）"]
+    # read_range = sheet['B5':'BY144']
+    tmp = pd.read_excel(file_path, sheet_name=0, index_col=0)
     return
 
 
