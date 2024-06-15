@@ -30,10 +30,26 @@ def get_file_index(file_path):
         Part.PROJECT: [],
         Part.SKILL: [],
     }
+
     wb = openpyxl.load_workbook(file_path)
     sheet = wb["スキルシート（開発系）"]
     read_range = sheet['B5':'B144']
+    file_index = find_dict_name(file_index, read_range)
     return
+
+
+def find_dict_name(file_index, read_range):
+    index_name = list([name.value for name in list(file_index.keys())])
+    start, end = 0, 0
+
+    for idx, row in enumerate(read_range):
+        val = row[0].value
+        if (val in index_name) or (idx == len(read_range)):
+            if start != 0:
+                start, end = idx, start
+                file_index[val] = [start, end]
+            start = idx
+    return file_index
 
 
 if __name__ == "__main__":
