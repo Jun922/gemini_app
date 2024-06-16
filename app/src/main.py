@@ -26,9 +26,9 @@ def main(model, file_path):
 
 def get_file_index(file_path):
     file_index = {
-        Part.CERTIFICATION: [],
-        Part.PROJECT: [],
-        Part.SKILL: [],
+        Part.CERTIFICATION.value: [],
+        Part.PROJECT.value: [],
+        Part.SKILL.value: [],
     }
 
     wb = openpyxl.load_workbook(file_path)
@@ -39,14 +39,14 @@ def get_file_index(file_path):
 
 
 def find_dict_name(file_index, read_range):
-    index_name = list([name.value for name in list(file_index.keys())])
+    index_name = list([name for name in list(file_index.keys())])
     start, end = 0, 0
 
     for idx, row in enumerate(read_range):
         val = row[0].value
         if (val in index_name) or (idx == len(read_range)):
             if start != 0:
-                start, end = idx, start
+                end = idx
                 file_index[val] = [start, end]
             start = idx
     return file_index
