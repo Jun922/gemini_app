@@ -6,19 +6,19 @@ from const import Part, SHEET_NAME
 class Prompt:
     def __init__(self, file_path):
         self.sheet = (openpyxl.load_workbook(file_path))[SHEET_NAME]
-        self.file_index = {
+
+    def get_info(self):
+        read_range = self.sheet['B1': 'B144']
+        return read_range
+
+    def find_index(self, read_range):
+        file_index = {
             Part.CERTIFICATION.value: [],
             Part.INTRODUCTION.value: [],
             Part.PROJECT.value: [],
             Part.SKILL.value: [],
         }
-
-    def get_file_index(self):
-        read_range = self.sheet['B1': 'B144']
-        return read_range
-
-    def find_dict_name(self, read_range):
-        index_name = list([name for name in list(self.file_index.keys())])
+        index_name = list([name for name in list(file_index.keys())])
         start, end = 0, 0
 
         for idx, row in enumerate(read_range, 1):
@@ -26,9 +26,10 @@ class Prompt:
             if (val in index_name) or (idx == len(read_range)):
                 if start != 0:
                     end = idx - 1
-                    self.file_index[bf_val] = [start, end]
+                    file_index[bf_val] = [start, end]
                 start = idx
                 bf_val = val
+        return file_index
 
     def get_range_content(self, part, range):
         start, end = range
