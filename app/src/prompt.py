@@ -37,7 +37,7 @@ class Prompt:
         if part == Part.CERTIFICATION.value:
             return self.read_certification(range_content)
         if part == Part.INTRODUCTION.value:
-            pass
+            return self.read_introduction(range_content)
         if part == Part.PROJECT.value:
             pass
         if part == Part.SKILL.value:
@@ -55,4 +55,15 @@ class Prompt:
                     if cell.value == "年": break
                     ret.append(cell.value)
                 cnt += 1
+        return ret
+    
+    def read_introduction(self, range_content):
+        ret = []
+
+        for row in range_content:
+            for col in row:
+                if col.value is not None:
+                    ret.append(col.value)
+                    ret.append("\n")
+        # 改行処理を行う必要がある
         return ret
