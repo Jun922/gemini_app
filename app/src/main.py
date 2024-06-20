@@ -18,15 +18,7 @@ def main(model, file_path):
     file_index = obj.find_index(read_range)
     for part, range in list(file_index.items()):
         content = obj.get_range_content(part, range)
-
-        if part == Part.CERTIFICATION.value:
-            prompts[part] = content
-        if part == Part.INTRODUCTION.value:
-            pass
-        if part == Part.PROJECT.value:
-            pass
-        if part == Part.SKILL.value:
-            pass
+        prompts[part] = content
 
 
     # while True:

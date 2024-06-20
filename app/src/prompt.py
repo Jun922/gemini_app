@@ -62,8 +62,10 @@ class Prompt:
 
         for row in range_content:
             for col in row:
+                if col.value == "\n": continue
+                if col.value == Part.INTRODUCTION.value: continue
                 if col.value is not None:
                     ret.append(col.value)
-                    ret.append("\n")
-        # 改行処理を行う必要がある
+
+        ret = ret[0].split("\n")
         return ret
