@@ -39,7 +39,7 @@ class Prompt:
         if part == Part.INTRODUCTION.value:
             return self.read_introduction(range_content)
         if part == Part.PROJECT.value:
-            pass
+            return self.read_project(range_content)
         if part == Part.SKILL.value:
             pass
     
@@ -58,6 +58,20 @@ class Prompt:
         return ret
     
     def read_introduction(self, range_content):
+        ret = []
+
+        for row in range_content:
+            for col in row:
+                if col.value == "\n": continue
+                if col.value == Part.INTRODUCTION.value: continue
+                if col.value is not None:
+                    ret.append(col.value)
+
+        ret = ret[0].split("\n")
+        return ret
+        return ret
+    
+    def read_project(self, range_content):
         ret = []
 
         for row in range_content:
