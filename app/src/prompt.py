@@ -83,3 +83,16 @@ class Prompt:
 
         ret = ret[0].split("\n")
         return ret
+    
+    def read_skill(self, range_content):
+        ret = []
+
+        for row in range_content:
+            for col in row:
+                if col.value == "\n": continue
+                if col.value == Part.INTRODUCTION.value: continue
+                if col.value is not None:
+                    ret.append(col.value)
+
+        ret = ret[0].split("\n")
+        return ret
