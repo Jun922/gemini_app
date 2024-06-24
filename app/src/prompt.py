@@ -1,6 +1,6 @@
 import openpyxl
 # from .const import Part, SHEET_NAME
-from const import Part, SHEET_NAME
+from const import Part, Skills, SHEET_NAME
 
 
 class Prompt:
@@ -41,7 +41,7 @@ class Prompt:
         if part == Part.PROJECT.value:
             return self.read_project(range_content)
         if part == Part.SKILL.value:
-            pass
+            return self.read_skill(range_content)
     
     def read_certification(self, range_content):
         ret = []
@@ -69,20 +69,9 @@ class Prompt:
 
         ret = ret[0].split("\n")
         return ret
-        return ret
     
     def read_project(self, range_content):
-        ret = []
-
-        for row in range_content:
-            for col in row:
-                if col.value == "\n": continue
-                if col.value == Part.INTRODUCTION.value: continue
-                if col.value is not None:
-                    ret.append(col.value)
-
-        ret = ret[0].split("\n")
-        return ret
+        return
     
     def read_skill(self, range_content):
         ret = []
