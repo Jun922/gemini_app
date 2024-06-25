@@ -76,6 +76,9 @@ class Prompt:
     def read_skill(self, range_content):
         ret = []
 
+        # cellで新しい範囲がスタートしている
+        # 件名と比較には背景色で比べるといいと思う
+
         for row in range_content:
             for col in row:
                 if col.value == "\n": continue
