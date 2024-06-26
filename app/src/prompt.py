@@ -1,11 +1,11 @@
-import openpyxl
+from openpyxl import load_workbook, styles
 # from .const import Part, SHEET_NAME
 from const import Part, Skills, SHEET_NAME
 
 
 class Prompt:
     def __init__(self, file_path):
-        self.sheet = (openpyxl.load_workbook(file_path))[SHEET_NAME]
+        self.sheet = (load_workbook(file_path))[SHEET_NAME]
 
     def get_info(self):
         read_range = self.sheet['B1': 'B144']
@@ -74,17 +74,19 @@ class Prompt:
         return
     
     def read_skill(self, range_content):
-        ret = []
+        ret = {}
 
         # cellで新しい範囲がスタートしている
         # 件名と比較には背景色で比べるといいと思う
 
+        # 値のあるなしはどう判断させる？
+        次のcellの左
+
         for row in range_content:
             for col in row:
-                if col.value == "\n": continue
-                if col.value == Part.INTRODUCTION.value: continue
-                if col.value is not None:
-                    ret.append(col.value)
+                if col.value is None: continue
+                if col.fill.fgColor.value == "FFD9D9D9": continue
+                ret.append(col.value)
 
         ret = ret[0].split("\n")
         return ret
