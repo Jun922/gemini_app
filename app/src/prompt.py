@@ -1,4 +1,4 @@
-from openpyxl import load_workbook, styles
+from openpyxl import load_workbook, cell
 # from .const import Part, SHEET_NAME
 from const import Part, Skills, SHEET_NAME
 
@@ -80,13 +80,22 @@ class Prompt:
         # 件名と比較には背景色で比べるといいと思う
 
         # 値のあるなしはどう判断させる？
-        次のcellの左
+        # 次のcellの左
+        ttl = None
 
         for row in range_content:
             for col in row:
-                if col.value is None: continue
-                if col.fill.fgColor.value == "FFD9D9D9": continue
-                ret.append(col.value)
+                val = col.value
+                bg_color = col.fill.fgColor.value
 
-        ret = ret[0].split("\n")
+                if isinstance(col, cell.Cell):
+                    if val is None: ttl = None
+                if val is None: continue
+                if bg_color != "00000000": continue
+
+                if ttl is not None:
+                    ret[ttl] = val
+                    ttl = None
+                else:
+                    ttl = val
         return ret
