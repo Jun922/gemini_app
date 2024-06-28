@@ -20,4 +20,12 @@ class Skills(Enum):
     CRM = "CRM"
 
 
+class Levels(Enum):
+    LEVEL_A = "業務の独力遂行、業務課題発見・解決、後進教育ができる"
+    LEVEL_B = "業務の独力遂行ができる"
+    LEVEL_C = "業務を上位者指導のもと遂行ができる"
+    LEVEL_D = "実務を通じた学習経験あり"
+    LEVEL_E = "独自学習経験あり"
+
+
 SHEET_NAME = "スキルシート（開発系）"
