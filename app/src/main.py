@@ -1,5 +1,5 @@
 # from .prompt import Prompt
-from const import Part, SHEET_NAME
+from const import Part, Skills, SHEET_NAME
 from prompt import Prompt
 
 
