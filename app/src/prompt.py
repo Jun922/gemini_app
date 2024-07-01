@@ -71,7 +71,11 @@ class Prompt:
         return ret
     
     def read_project(self, range_content):
-        return
+        ret = []
+
+        # 欲しい情報: 期間, 内容
+        
+        return ret
     
     def read_skill(self, range_content):
         ret = {}
