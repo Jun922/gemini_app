@@ -71,9 +71,10 @@ class Prompt:
         return ret
     
     def read_project(self, range_content):
-        ret = []
+        ret = {}
 
-        # 欲しい情報: 期間, 内容
+        # 欲しい情報: 期間, タイトル, 内容
+        # eg. ret = {ttl: [span, contents]}
         
         return ret
     
