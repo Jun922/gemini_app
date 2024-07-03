@@ -72,9 +72,13 @@ class Prompt:
     
     def read_project(self, range_content):
         ret = {}
+        experiences = {} # {No(num): [start, end]}
+        num = 1
 
         # 欲しい情報: 期間, タイトル, 内容
         # eg. ret = {ttl: [span, contents]}
+
+        # noで１案件の記述の長さを測る
         
         return ret
     
