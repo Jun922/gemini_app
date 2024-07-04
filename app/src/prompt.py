@@ -79,7 +79,14 @@ class Prompt:
         # eg. ret = {ttl: [span, contents]}
 
         # noで１案件の記述の長さを測る
-        
+
+        for idx, row in range_content:
+            for col in row:
+                if idx == 0: continue
+                if not isinstance(col, cell.Cell): continue
+
+                start = idx
+                end = idx
         return ret
     
     def read_skill(self, range_content):
