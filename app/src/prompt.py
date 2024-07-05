@@ -71,23 +71,27 @@ class Prompt:
         return ret
     
     def read_project(self, range_content):
-        ret = {}
+        per_project_range = {}
         experiences = {} # {No(num): [start, end]}
         num = 1
+        start = None
 
         # 欲しい情報: 期間, タイトル, 内容
         # eg. ret = {ttl: [span, contents]}
 
         # noで１案件の記述の長さを測る
 
-        for idx, row in range_content:
-            for col in row:
-                if idx == 0: continue
-                if not isinstance(col, cell.Cell): continue
-
-                start = idx
+        for idx, row in enumerate(range_content):
+            if idx == 0: continue
+            if not isinstance(row[0], cell.Cell): continue
+            if start is not None:
                 end = idx
-        return ret
+                if (end - start) > 1:
+                    per_project_range[f"No.{num}"] = [start, end]
+                    num += 1
+                start = None
+            start = idx
+        return experiences
     
     def read_skill(self, range_content):
         ret = {}
