@@ -1,3 +1,4 @@
+from datetime import datetime
 from openpyxl import load_workbook, cell
 # from .const import Part, SHEET_NAME
 from const import Part, Skills, SHEET_NAME
@@ -72,9 +73,10 @@ class Prompt:
     
     def read_project(self, range_content):
         per_project_range = {}
-        experiences = {} # {No(num): [start, end]}
+        experiences = {} # {No.(num): [start, end]}
         num = 1
         start = None
+        year, month  = 0, 0
 
         # 欲しい情報: 期間, タイトル, 内容
         # eg. ret = {ttl: [span, contents]}
@@ -91,6 +93,12 @@ class Prompt:
                     num += 1
                 start = None
             start = idx
+
+        for item in list(per_project_range.values()):
+            start, end = item
+            tmp = range_content[start:(end+1)]
+
+        
         return experiences
     
     def read_skill(self, range_content):
