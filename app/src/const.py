@@ -20,6 +20,14 @@ class Skills(Enum):
     CRM = "CRM"
 
 
+COLUMN_M = 11
+
+
+class Span(Enum):
+    YEAR = "D"
+    MONTH = "I"
+
+
 class Levels(Enum):
     LEVEL_A = "業務の独力遂行、業務課題発見・解決、後進教育ができる"
     LEVEL_B = "業務の独力遂行ができる"

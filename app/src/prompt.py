@@ -1,7 +1,7 @@
 from datetime import datetime
 from openpyxl import load_workbook, cell
 # from .const import Part, SHEET_NAME
-from const import Part, Skills, SHEET_NAME
+from const import Part, Span, Skills, SHEET_NAME, COLUMN_M
 
 
 class Prompt:
@@ -72,17 +72,19 @@ class Prompt:
         return ret
     
     def read_project(self, range_content):
-        per_project_range = {}
-        experiences = {} # {No.(num): [start, end]}
+        per_project_range = {} # {No.(num): [start, end]}
+        experiences = {} # {title: [span], [project_contents]}
         num = 1
         start = None
-        year, month  = 0, 0
+        year, month  = None, None
+        title = None
 
         # 欲しい情報: 期間, タイトル, 内容
         # eg. ret = {ttl: [span, contents]}
 
         # noで１案件の記述の長さを測る
 
+        # 各プロジェクトの範囲取得
         for idx, row in enumerate(range_content):
             if idx == 0: continue
             if not isinstance(row[0], cell.Cell): continue
@@ -94,11 +96,19 @@ class Prompt:
                 start = None
             start = idx
 
+        # タイトル取得
         for item in list(per_project_range.values()):
             start, end = item
-            tmp = range_content[start:(end+1)]
+            title = (range_content[start:(end+1)][0][COLUMN_M]).value
+            experiences[title] = [[], []]
 
-        
+        # 期間取得
+        # for item in list(per_project_range.values()):
+        #     start, end = item
+        #     tmp = range_content[start:(end+1)]
+
+        # 内容取得
+
         return experiences
     
     def read_skill(self, range_content):
