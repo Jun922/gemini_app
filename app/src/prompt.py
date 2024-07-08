@@ -81,7 +81,6 @@ class Prompt:
 
         # 欲しい情報: 期間, タイトル, 内容
         # eg. ret = {ttl: [span, contents]}
-
         # noで１案件の記述の長さを測る
 
         # 各プロジェクトの範囲取得
@@ -103,9 +102,9 @@ class Prompt:
             experiences[title] = [[], []]
 
         # 期間取得
-        # for item in list(per_project_range.values()):
-        #     start, end = item
-        #     tmp = range_content[start:(end+1)]
+        for key, item in zip(list(experiences.keys()), list(per_project_range.values())):
+            start, end = item
+            pass
 
         # 内容取得
 
